@@ -6,10 +6,10 @@ int main(int argc, char* argv[])
 
     int** a = allocate_matrix(sz);
     int values[4][4] = {        // for some reason sz does not work - type mismatch
-        {0, INF, -2, INF},
-        {4, 0, 3, INF},
-        {INF, INF, 0, 2},
-        {INF, -1, INF, 0}
+        {0, INF, INF, INF},
+        {3, 0, INF, 2},
+        {5, 1, 0, INF},
+        {INF, INF, 3, 0}
     };
 
     // insert values into a
@@ -21,6 +21,5 @@ int main(int argc, char* argv[])
     }
 
     floyd_algorithm(a, sz);
-
     free_matrix(a, sz);
 } 

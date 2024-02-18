@@ -5,13 +5,17 @@
 #include <stdlib.h>
 
 #define INF 2147483647
-#define PADDING 3
+#define PADDING 11
 
 /**
  * allocates squared matrix.
 */
 int** allocate_matrix(size_t sz);
 
+
+/**
+ * copy entries for source matrix to target matrix
+*/
 void copy_matrix(int** source, int** target, size_t sz);
 
 
