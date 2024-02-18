@@ -28,18 +28,27 @@ void floyd_algorithm(int** a, size_t sz)
 }
 
 
-void print_matrix(size_t sz, int** matrix)
+void print_matrix(size_t sz, int** a)
 {
     for (int i=0; i<sz; i++) 
     {
         for (int j=0; j<sz; j++) 
         {
-            printf("%*d ", PADDING,  matrix[i][j]);
+            int is_infinity = a[i][j] == INF;
+            if (is_infinity)
+            {
+                printf("%*s", PADDING+1, "inf");
+            }
+            else
+            {
+                printf("%*d ", PADDING,  a[i][j]);
+            }  
         }
         printf("\n");    
     }
     printf("\n");
 }
+
 
 void copy_matrix(int** source, int** target, size_t sz)
 {
