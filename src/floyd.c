@@ -1,11 +1,10 @@
 #include "../include/floyd.h"
 
-void floyd_algorithm(int** a, size_t sz) 
+void floyd_algorithm(int** a, size_t sz)    // TODO: return matrix, don't change matrix a.
 {
+    init_step_floyd(a, sz);
     int** copied_matrix = allocate_matrix(sz);    // TODO: error handling when allocation fails
-
     copy_matrix(a, copied_matrix, sz);
-    print_matrix(sz, copied_matrix);
 
     for (int r=0; r<sz; r++)
     {
@@ -25,6 +24,26 @@ void floyd_algorithm(int** a, size_t sz)
 
     print_matrix(sz, a);
     free_matrix(copied_matrix, sz);
+}
+
+
+void init_step_floyd(int** a, size_t sz)
+{
+    for (int i=0; i<sz; i++)
+    {
+        for (int j=0; j<sz; j++)
+        {
+            if (a[i][j] == 0)
+            {
+                a[i][j] = INF;  // node is not reachable, set distance to infinity (defined as INF)
+            }
+
+            if (i == j) 
+            {
+                a[i][j] = 0;
+            }
+        }
+    }
 }
 
 
