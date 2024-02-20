@@ -19,7 +19,11 @@ void floyd_algorithm(int** a, size_t sz)    // TODO: return matrix, don't change
                 }
             }
         }
-        copy_matrix(copied_matrix, a, sz);
+
+        // copy the changes for current r back to matrix a
+        copy_matrix(copied_matrix, a, sz);  
+        printf("r = %d\n", r);
+        print_matrix(sz, a);
     }
 
     print_matrix(sz, a);
@@ -40,7 +44,7 @@ void init_step_floyd(int** a, size_t sz)
 
             if (i == j) 
             {
-                a[i][j] = 0;
+                a[i][j] = 0;    //path to itself is always 0.
             }
         }
     }
@@ -53,6 +57,7 @@ void print_matrix(size_t sz, int** a)
     {
         for (int j=0; j<sz; j++) 
         {
+            // more convenient output for INF macro
             int is_infinity = a[i][j] == INF;
             if (is_infinity)
             {

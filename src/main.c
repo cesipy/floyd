@@ -1,5 +1,8 @@
 #include "../include/floyd.h"
 
+
+// showcases floyd algorithm for a graph with initialization step
+// and without.
 void showcase(size_t sz)
 {
     int** a = allocate_matrix(sz);
@@ -41,8 +44,33 @@ void showcase(size_t sz)
 }
 
 
+// compute floyd for a given matrix `a`.
+void floyd(size_t sz, int** a)
+{
+    floyd_algorithm(a, sz);
+    free_matrix(a, sz);
+}
+
 int main(int argc, char* argv[]) 
 {
-    size_t sz = 4;
-    showcase(sz);
+    size_t sz = 3;
+    //showcase(sz);
+
+    int** a = allocate_matrix(sz);
+
+    int values[3][3] = {
+        {0, 8, 10}, 
+        {11, 10, 100},
+        {1000, 0, 0}
+    };
+
+    for (int i=0; i<sz; i++)
+    {
+        for (int j=0; j<sz; j++)
+        {
+            a[i][j] = values[i][j];
+        }
+    }
+    
+    floyd(sz, a);
 } 
